@@ -17,10 +17,7 @@ module.exports = function(config) {
             clearContext: false, // leave Jasmine Spec Runner output visible in browser
         },
         coverageIstanbulReporter: {
-            dir: require('path').join(
-                __dirname,
-                '../coverage/cloudera-github-search'
-            ),
+            dir: require('path').join(__dirname, '../coverage/cloudera-github-search'),
             reports: ['html', 'lcovonly', 'text-summary'],
             fixWebpackSourcePaths: true,
         },
@@ -32,7 +29,7 @@ module.exports = function(config) {
             suppressPassed: false, // do not print information about passed tests
             suppressSkipped: true, // do not print information about skipped tests
             showSpecTiming: false, // print the time elapsed for each spec
-            failFast: true, // test would finish with error when a first fail occurs.
+            failFast: false, // test would finish with error when a first fail occurs.
         },
         port: 9876,
         colors: true,
