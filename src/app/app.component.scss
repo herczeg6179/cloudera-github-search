@@ -1,0 +1,10 @@
+.content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .search,
+    .extra-info {
+        flex: 1;
+        min-width: 500px; // random number, point is we have two columns, that will diplay beside eachother if fits, and wrap if not
+    }
+}
