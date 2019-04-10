@@ -2,10 +2,10 @@
 
 <div class="content">
     <section class="search">
-        <app-login class="search-tool"></app-login>
-        <app-search-tool class="search-tool"></app-search-tool>
-        <app-repo-info class="repo-info"></app-repo-info>
-        <app-repo-issues class="repo-issues"></app-repo-issues>
+        <app-login></app-login>
+        <app-search-tool (repoSelected)="onRepoSelected($event)" class="search-tool"></app-search-tool>
+        <app-repo-info [repo]="repo" class="repo-info"></app-repo-info>
+        <app-repo-issues [issues]="issues" isLoading="issuesLoading" class="repo-issues"></app-repo-issues>
     </section>
     <section class="extra-info">
         <app-analytics class="analytics"></app-analytics>
