@@ -1,0 +1,26 @@
+<form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input type="text" matInput placeholder="Username" formControlName="username" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput placeholder="Password" formControlName="password" />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">Authenticate</button>
+
+    <p *ngIf="!isAuthenticated">
+        <span class="material-icons">
+            warning
+        </span>
+        You're not authenticated.
+    </p>
+    <p *ngIf="isAuthenticated">
+        <span class="material-icons">
+            thumb_up
+        </span>
+        You're now authenticated, carry on.
+    </p>
+</form>
