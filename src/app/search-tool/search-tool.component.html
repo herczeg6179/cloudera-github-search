@@ -1,3 +1,26 @@
-<p>
-    search-tool works!
-</p>
+<form class="autocomplete-form" [formGroup]="autocompleteForm">
+    <mat-form-field appearance="outline">
+        <mat-label>Keyword</mat-label>
+        <input
+            type="text"
+            matInput
+            placeholder="Repo name, Owner, Tag, etc."
+            formControlName="keyword"
+            [matAutocomplete]="auto"
+        />
+    </mat-form-field>
+
+    <mat-autocomplete
+        #auto="matAutocomplete"
+        [displayWith]="formatOutput"
+        (optionSelected)="setSetlected($event.option.value)"
+    >
+        <ng-container *ngIf="!isLoading">
+            <mat-option *ngFor="let repo of repoList" [value]="repo">
+                {{ repo.name }}
+            </mat-option>
+        </ng-container>
+    </mat-autocomplete>
+
+    <p *ngIf="isLoading">Loading</p>
+</form>
