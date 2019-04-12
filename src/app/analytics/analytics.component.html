@@ -1,3 +1,12 @@
-<p>
-    analytics works!
-</p>
+<mat-list class="mat-chip-list-stacked">
+    <mat-list-item *ngFor="let item of legend" selected [style.backgroundColor]="item.color">
+        {{ item.name }}
+        <button mat-icon-button (click)="removeRepo(item.id)">
+            <span class="material-icons" aria-label="Example icon-button with a heart icon">delete</span>
+        </button>
+    </mat-list-item>
+</mat-list>
+
+<app-bar-chart [data]="starGazerChartData"></app-bar-chart>
+<app-bar-chart [data]="forkChartData"></app-bar-chart>
+<app-bar-chart [data]="openIssuesChartData"></app-bar-chart>

@@ -10,21 +10,31 @@ import { map, tap } from 'rxjs/operators'
     styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+    private issueRequest: Subscription
+
     public repo: GitRepoInfo
     public issues: Array<GitIssueInfo>
+    public reposToCompare: Array<GitRepoInfo> = []
     public issuesLoading: boolean
-    private issueRequest: Subscription
 
     constructor(private gitApi: GitApiService) {}
 
     ngOnInit() {}
+    onAddForComparing(repo: GitRepoInfo): void {
+        this.reposToCompare = [...this.reposToCompare, repo]
+    }
 
-    onRepoSelected(repo) {
+    onRemoveFromComparing(repoID: GitRepoInfo['id']): void {
+        this.reposToCompare = [...this.reposToCompare.filter(({ id }) => id !== repoID)]
+        console.log(this.reposToCompare)
+    }
+
+    onRepoSelected(repo: GitRepoInfo): void {
         this.repo = repo
         this.loadRepoIssues()
     }
 
-    loadRepoIssues() {
+    loadRepoIssues(): void {
         this.destroyIssueData()
         this.issuesLoading = true
         this.issueRequest = this.gitApi

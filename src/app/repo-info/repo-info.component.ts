@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core'
+import { Component, Input, Output, EventEmitter } from '@angular/core'
 import { GitRepoInfo } from '../api/git-api-interfaces'
 
 @Component({
@@ -6,10 +6,14 @@ import { GitRepoInfo } from '../api/git-api-interfaces'
     templateUrl: './repo-info.component.html',
     styleUrls: ['./repo-info.component.scss'],
 })
-export class RepoInfoComponent implements OnInit {
+export class RepoInfoComponent {
     @Input() repo: GitRepoInfo
+
+    @Output() addForComparing = new EventEmitter<GitRepoInfo>()
 
     constructor() {}
 
-    ngOnInit() {}
+    selectForComparing() {
+        this.addForComparing.emit({ ...this.repo })
+    }
 }

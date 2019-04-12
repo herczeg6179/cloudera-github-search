@@ -4,10 +4,14 @@
     <section class="search">
         <app-login></app-login>
         <app-search-tool (repoSelected)="onRepoSelected($event)" class="search-tool"></app-search-tool>
-        <app-repo-info [repo]="repo" class="repo-info"></app-repo-info>
+        <app-repo-info [repo]="repo" (addForComparing)="onAddForComparing($event)" class="repo-info"></app-repo-info>
         <app-repo-issues [issues]="issues" isLoading="issuesLoading" class="repo-issues"></app-repo-issues>
     </section>
     <section class="extra-info">
-        <app-analytics class="analytics"></app-analytics>
+        <app-analytics
+            class="analytics"
+            [repos]="reposToCompare"
+            (removeFromComparing)="onRemoveFromComparing($event)"
+        ></app-analytics>
     </section>
 </div>

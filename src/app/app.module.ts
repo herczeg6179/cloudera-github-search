@@ -20,6 +20,7 @@ import { AnalyticsComponent } from './analytics/analytics.component'
 import { ApiModule } from './api/api.module'
 import { LoginComponent } from './login/login.component'
 import { RepoDetailsItemComponent } from './repo-info/repo-details-item/repo-details-item.component'
+import { BarChartComponent } from './analytics/bar-chart/bar-chart.component'
 
 @NgModule({
     declarations: [
@@ -30,6 +31,7 @@ import { RepoDetailsItemComponent } from './repo-info/repo-details-item/repo-det
         AnalyticsComponent,
         LoginComponent,
         RepoDetailsItemComponent,
+        BarChartComponent,
     ],
     imports: [
         CommonModule,
@@ -43,6 +45,7 @@ import { RepoDetailsItemComponent } from './repo-info/repo-details-item/repo-det
         MatAutocompleteModule,
         MatCardModule,
         MatListModule,
+        MatChipsModule,
         ApiModule,
     ],
     providers: [],
