@@ -10,6 +10,8 @@ import {
     MatAutocompleteModule,
     MatCardModule,
     MatListModule,
+    MatBottomSheetModule,
+    MatTooltipModule,
 } from '@angular/material'
 
 import { AppComponent } from './app.component'
@@ -18,9 +20,10 @@ import { RepoInfoComponent } from './repo-info/repo-info.component'
 import { RepoIssuesComponent } from './repo-issues/repo-issues.component'
 import { AnalyticsComponent } from './analytics/analytics.component'
 import { ApiModule } from './api/api.module'
-import { LoginComponent } from './login/login.component'
+import { LoginComponent } from './authentication/login/login.component'
 import { RepoDetailsItemComponent } from './repo-info/repo-details-item/repo-details-item.component'
 import { BarChartComponent } from './analytics/bar-chart/bar-chart.component'
+import { AuthenticationComponent } from './authentication/authentication.component'
 
 @NgModule({
     declarations: [
@@ -32,6 +35,7 @@ import { BarChartComponent } from './analytics/bar-chart/bar-chart.component'
         LoginComponent,
         RepoDetailsItemComponent,
         BarChartComponent,
+        AuthenticationComponent,
     ],
     imports: [
         CommonModule,
@@ -46,8 +50,11 @@ import { BarChartComponent } from './analytics/bar-chart/bar-chart.component'
         MatCardModule,
         MatListModule,
         MatChipsModule,
+        MatBottomSheetModule,
+        MatTooltipModule,
         ApiModule,
     ],
+    entryComponents: [LoginComponent],
     providers: [],
     bootstrap: [AppComponent],
 })

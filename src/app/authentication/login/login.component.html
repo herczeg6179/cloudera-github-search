@@ -1,4 +1,8 @@
 <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <h3>
+        Provide authentication information for a Github account. It will be included in the API calls as per the Basic
+        Access Authentication protocol. I will not be stored or sent anywhere else.
+    </h3>
     <mat-form-field appearance="outline">
         <mat-label>Username</mat-label>
         <input type="text" matInput placeholder="Username" formControlName="username" />
@@ -10,17 +14,4 @@
     </mat-form-field>
 
     <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">Authenticate</button>
-
-    <p *ngIf="!isAuthenticated">
-        <span class="material-icons">
-            warning
-        </span>
-        You're not authenticated.
-    </p>
-    <p *ngIf="isAuthenticated">
-        <span class="material-icons">
-            thumb_up
-        </span>
-        You're now authenticated, carry on.
-    </p>
 </form>

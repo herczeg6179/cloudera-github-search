@@ -1,17 +1,17 @@
-<h1>Cloudera Github Search</h1>
-
-<div class="content">
-    <section class="search">
-        <app-login></app-login>
-        <app-search-tool (repoSelected)="onRepoSelected($event)" class="search-tool"></app-search-tool>
-        <app-repo-info [repo]="repo" (addForComparing)="onAddForComparing($event)" class="repo-info"></app-repo-info>
-        <app-repo-issues [issues]="issues" isLoading="issuesLoading" class="repo-issues"></app-repo-issues>
-    </section>
-    <section class="extra-info">
-        <app-analytics
-            class="analytics"
-            [repos]="reposToCompare"
-            (removeFromComparing)="onRemoveFromComparing($event)"
-        ></app-analytics>
-    </section>
+<div class="app">
+    <h1 class="app-title">Cloudera Github Search</h1>
+    <div class="app-content">
+        <section class="app-content-search">
+            <app-search-tool (repoSelected)="onRepoSelected($event)"></app-search-tool>
+            <app-repo-info [repo]="repo" (addForComparing)="onAddForComparing($event)"></app-repo-info>
+            <app-repo-issues [issues]="issues" isLoading="issuesLoading"></app-repo-issues>
+        </section>
+        <section class="app-content-analytics">
+            <app-analytics
+                [repos]="reposToCompare"
+                (removeFromComparing)="onRemoveFromComparing($event)"
+            ></app-analytics>
+        </section>
+    </div>
+    <app-authentication></app-authentication>
 </div>

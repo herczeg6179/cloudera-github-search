@@ -1,10 +1,20 @@
-.content {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    .search,
-    .extra-info {
-        flex: 1;
-        min-width: 500px; // random number, point is we have two columns, that will diplay beside eachother if fits, and wrap if not
+$app-width: 1200px;
+.app {
+    max-width: $app-width;
+    min-width: calc($app-width/2);
+    margin: auto;
+    &-title {
+        text-align: center;
+    }
+    &-content {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        &-search,
+        &-analytics {
+            flex: 1;
+            min-width: calc($app-width/2);
+            margin: 10px;
+        }
     }
 }
