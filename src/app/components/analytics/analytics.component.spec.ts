@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { AnalyticsComponent } from './analytics.component'
+import { NO_ERRORS_SCHEMA } from '@angular/core'
 
 describe('AnalyticsComponent', () => {
     let component: AnalyticsComponent
@@ -9,6 +10,7 @@ describe('AnalyticsComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [AnalyticsComponent],
+            schemas: [NO_ERRORS_SCHEMA], // only do shallow tests for now
         }).compileComponents()
     }))
 

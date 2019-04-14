@@ -4,10 +4,20 @@ import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { GitApiService } from './git-api.service'
 import { HttpClient } from '@angular/common/http'
 import { of } from 'rxjs'
+import { MatSnackBar } from '@angular/material'
 
 describe('GitApiService', () => {
     beforeEach(() =>
         TestBed.configureTestingModule({
+            providers: [
+                {
+                    provide: Notification,
+                    useClass: class NotificationStub {
+                        notify() {}
+                    },
+                },
+                { provide: MatSnackBar, useClass: class MatSnackBarStub {} },
+            ],
             imports: [HttpClientTestingModule],
         })
     )

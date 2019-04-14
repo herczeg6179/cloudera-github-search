@@ -4,7 +4,7 @@
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
-        "build": "ng build",
+        "build": "ng build --prod=true --buildOptimizer=true",
         "test": "ng test --watch=false",
         "test:watch": "ng test",
         "lint": "ng lint",

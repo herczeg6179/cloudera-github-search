@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { RepoInfoComponent } from './repo-info.component'
+import { NO_ERRORS_SCHEMA } from '@angular/core'
 
 describe('RepoInfoComponent', () => {
     let component: RepoInfoComponent
@@ -9,6 +10,7 @@ describe('RepoInfoComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [RepoInfoComponent],
+            schemas: [NO_ERRORS_SCHEMA], // only do shallow tests for now
         }).compileComponents()
     }))
 

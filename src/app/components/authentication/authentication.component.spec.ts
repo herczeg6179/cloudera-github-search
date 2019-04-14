@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { AuthenticationComponent } from './authentication.component'
+import { MatBottomSheet } from '@angular/material'
 
 describe('AuthenticationComponent', () => {
     let component: AuthenticationComponent
@@ -8,6 +9,7 @@ describe('AuthenticationComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
+            providers: [{ provide: MatBottomSheet, useClass: class MatBottomSheetStub {} }],
             declarations: [AuthenticationComponent],
         }).compileComponents()
     }))
