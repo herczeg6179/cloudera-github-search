@@ -1,5 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import './default-theme-colors';
+@import '~@angular/material/theming';
+
+$theme: mat-light-theme($primary-palette, $accent-palette, $warn-palette);
+@include angular-material-theme($theme);
+
 html,
 body {
     height: 100%;

@@ -4,8 +4,10 @@ import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core
 import { GitRepoInfo } from '../api/git-api-interfaces'
 import { BarChartData } from './bar-chart/bar-chart.component'
 
-const getColorRange = length => d3.quantize(t => d3.interpolateSpectral(t * 0.8 + 0.1), length).reverse()
+const MAX_TO_COMPARE = 10
 
+// produce a subset of d3.interpolateSpectral that is aproximately in range of our mat theme colors
+const getColorRange = length => d3.quantize(t => d3.interpolateSpectral(t * 0.2 + 0.7), length).reverse() 
 @Component({
     selector: 'app-analytics',
     templateUrl: './analytics.component.html',
