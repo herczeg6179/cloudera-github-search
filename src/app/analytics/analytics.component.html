@@ -1,12 +1,29 @@
-<mat-list class="mat-chip-list-stacked">
-    <mat-list-item *ngFor="let item of legend" selected [style.backgroundColor]="item.color">
-        {{ item.name }}
-        <button mat-icon-button (click)="removeRepo(item.id)">
+<h2>Compare Repo Statistics</h2>
+<mat-list class="legend-list">
+    <mat-list-item *ngFor="let item of legend" class="legend-list-item" selected [style.backgroundColor]="item.color">
+        <div class="legend-list-label">{{ item.name }}</div>
+        <button mat-icon-button (click)="removeRepo(item.id)" class="legend-list-button">
             <span class="material-icons" aria-label="Example icon-button with a heart icon">delete</span>
         </button>
     </mat-list-item>
 </mat-list>
 
-<app-bar-chart [data]="starGazerChartData"></app-bar-chart>
-<app-bar-chart [data]="forkChartData"></app-bar-chart>
-<app-bar-chart [data]="openIssuesChartData"></app-bar-chart>
+<div *ngIf="tooManyRepos" class="repo-limit-warning">
+    <span class="material-icons">
+        warning
+    </span>
+    You selected too many repos, some of them will not appear on the charts.
+</div>
+
+<div *ngIf="notEnoughRepos" class="not-enough-repo-info">
+    <span class="material-icons">
+        info
+    </span>
+    Select a minimum of 2 repos to compare.
+</div>
+
+<div *ngIf="!notEnoughRepos">
+    <app-bar-chart title="Stargazers Count" [data]="starGazerChartData"></app-bar-chart>
+    <app-bar-chart title="Forks Count" [data]="forkChartData"></app-bar-chart>
+    <app-bar-chart title="Open Issues Count" [data]="openIssuesChartData"></app-bar-chart>
+</div>

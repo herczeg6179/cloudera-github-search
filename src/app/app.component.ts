@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnDestroy } from '@angular/core'
 import { GitApiService } from './api/git-api.service'
 import { GitRepoInfo, GitIssueInfo } from './api/git-api-interfaces'
 import { Subscription } from 'rxjs'
@@ -9,7 +9,7 @@ import { map, tap } from 'rxjs/operators'
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnDestroy {
     private issueRequest: Subscription
 
     public repo: GitRepoInfo
@@ -19,14 +19,18 @@ export class AppComponent implements OnInit {
 
     constructor(private gitApi: GitApiService) {}
 
-    ngOnInit() {}
+    ngOnDestroy() {
+        this.cleanUpIssueRequest()
+    }
+
     onAddForComparing(repo: GitRepoInfo): void {
-        this.reposToCompare = [...this.reposToCompare, repo]
+        if (!this.reposToCompare.find(({ id }) => id === repo.id)) {
+            this.reposToCompare = [...this.reposToCompare, repo]
+        }
     }
 
     onRemoveFromComparing(repoID: GitRepoInfo['id']): void {
         this.reposToCompare = [...this.reposToCompare.filter(({ id }) => id !== repoID)]
-        console.log(this.reposToCompare)
     }
 
     onRepoSelected(repo: GitRepoInfo): void {

@@ -18,6 +18,7 @@ export interface BarChartData {
 export class BarChartComponent implements AfterContentInit, OnChanges {
     @ViewChild('chartContainer') openIssuesChartElement: ElementRef
     @Input() data: Array<BarChartData> = []
+    @Input() title: string
 
     private d3Container: Selection<Element, BarChartData, null, null>
     private transition = d3
@@ -27,13 +28,16 @@ export class BarChartComponent implements AfterContentInit, OnChanges {
     private beforePositionData = []
 
     private margin = { top: 20, right: 0, bottom: 30, left: 40 }
-    private width = 400
-    private height = 300
+    private width = 580
+    private height = 400
 
     constructor() {}
 
     ngAfterContentInit() {
         this.initBarChart()
+        if (this.data) {
+            this.updateChart()
+        }
     }
 
     ngOnChanges() {
@@ -42,11 +46,12 @@ export class BarChartComponent implements AfterContentInit, OnChanges {
         }
     }
 
-    private initBarChart() {
+    private initBarChart(): void {
         this.d3Container = d3.select(this.openIssuesChartElement.nativeElement)
 
         const svg = this.d3Container
             .append('svg')
+            .attr('class', 'chart-svg')
             .attr('width', this.width + this.margin.left + this.margin.right)
             .attr('height', this.height + this.margin.top + this.margin.bottom)
             .append('g')
@@ -63,14 +68,21 @@ export class BarChartComponent implements AfterContentInit, OnChanges {
     }
 
     private getXAxisRenderer() {
-        return x => g =>
-            g
+        return xScale => element =>
+            element
                 .attr('transform', `translate(0, ${this.height - this.margin.bottom})`)
-                .call(d3.axisBottom(x).tickSizeOuter(0))
+                .call(d3.axisBottom(xScale).tickSizeOuter(0))
+                .selectAll('text')
+                .attr('y', 0)
+                .attr('x', -9)
+                .attr('dy', '.35em')
+                .attr('transform', 'rotate(270)')
+                .style('text-anchor', 'end')
     }
 
     private getYAxisRenderer() {
-        return y => g => g.attr('transform', `translate(${this.margin.left},0)`).call(d3.axisLeft(y))
+        return yScale => element =>
+            element.attr('transform', `translate(${this.margin.left},0)`).call(d3.axisLeft(yScale))
     }
 
     private getXScale() {

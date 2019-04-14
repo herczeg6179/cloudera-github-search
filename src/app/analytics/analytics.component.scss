@@ -1,0 +1,34 @@
+@import 'src/default-theme-colors';
+
+.legend-list {
+    max-width: 300px;
+    &-item {
+        color: #fff;
+        font-weight: 500;
+        margin: 5px 0px;
+        border-radius: 5px;
+        padding-right: 30px;
+    }
+    &-button {
+        position: absolute;
+        right: 0px;
+    }
+    &-label {
+        padding-right: 20px;
+    }
+}
+
+.repo-limit-warning,
+.not-enough-repo-info {
+    font-weight: 500;
+    line-height: 24px;
+    .material-icons {
+        vertical-align: middle;
+    }
+}
+.repo-limit-warning {
+    color: $warn-color;
+}
+.not-enough-repo-info {
+    color: $primary-color-dark;
+}
