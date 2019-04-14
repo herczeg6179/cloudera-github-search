@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core'
-import { GitRepoInfo } from '../api/git-api-interfaces'
+import { GitRepoInfo } from '@api/git-api-interfaces'
 
 @Component({
     selector: 'app-repo-info',

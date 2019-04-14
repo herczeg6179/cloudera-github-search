@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core'
 import { HttpClient, HttpErrorResponse } from '@angular/common/http'
-import { Observable, EMPTY, throwError, of } from 'rxjs'
+import { Observable, throwError, of } from 'rxjs'
 import { catchError, map } from 'rxjs/operators'
 import { GitRepoList, GitIssueList, GitList } from './git-api-interfaces'
 import { NotificationService } from './notification.service'
+import { environment } from '@env/environment'
 
 const EMPTY_GITLIST: GitList<any> = { total_count: 0, incomplete_results: false, items: [] }
 
-const API_URL = 'https://api.github.com/'
+const { API_URL } = environment
 
 const API_ENDPONTS = {
     GET_REPOS: 'search/repositories',

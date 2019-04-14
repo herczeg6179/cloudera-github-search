@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core'
-import { GitIssueInfo } from '../api/git-api-interfaces'
+import { Component, Input, OnChanges } from '@angular/core'
+import { GitIssueInfo } from '@api/git-api-interfaces'
 
 interface IssuesOfState {
     state: string

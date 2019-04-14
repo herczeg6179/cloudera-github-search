@@ -1,9 +1,10 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core'
-import { GitRepoInfo } from '../api/git-api-interfaces'
 import { FormGroup, FormControl } from '@angular/forms'
-import { debounceTime, tap, switchMap, map, finalize } from 'rxjs/operators'
-import { GitApiService } from '../api/git-api.service'
+import { debounceTime, tap, switchMap, map } from 'rxjs/operators'
 import { EMPTY } from 'rxjs'
+
+import { GitRepoInfo } from '@api/git-api-interfaces'
+import { GitApiService } from '@api/git-api.service'
 
 const KEYDOWN_DEBOUNCE = 300
 const RESULT_MAX_LENGTH = 10

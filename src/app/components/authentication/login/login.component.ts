@@ -1,8 +1,9 @@
 import { Component, Output, EventEmitter, OnDestroy } from '@angular/core'
 import { FormGroup, FormControl, Validators } from '@angular/forms'
-import { GitApiService } from '../../api/git-api.service'
 import { MatBottomSheetRef } from '@angular/material'
 import { Subscription } from 'rxjs'
+
+import { GitApiService } from '@api/git-api.service'
 
 @Component({
     selector: 'app-login',

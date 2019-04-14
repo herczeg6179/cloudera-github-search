@@ -1,7 +1,7 @@
 import * as d3 from 'd3'
 
 import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core'
-import { GitRepoInfo } from '../api/git-api-interfaces'
+import { GitRepoInfo } from '@api/git-api-interfaces'
 import { BarChartData } from './bar-chart/bar-chart.component'
 
 const MAX_TO_COMPARE = 10

@@ -1,8 +1,9 @@
 import { Component, OnDestroy } from '@angular/core'
-import { GitApiService } from './api/git-api.service'
-import { GitRepoInfo, GitIssueInfo } from './api/git-api-interfaces'
 import { Subscription } from 'rxjs'
 import { map, tap } from 'rxjs/operators'
+
+import { GitApiService } from '@api/git-api.service'
+import { GitRepoInfo, GitIssueInfo } from '@api/git-api-interfaces'
 
 @Component({
     selector: 'app-root',
