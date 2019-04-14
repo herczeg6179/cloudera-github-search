@@ -39,7 +39,7 @@ export class AppComponent implements OnDestroy {
         this.loadRepoIssues()
     }
 
-    loadRepoIssues(): void {
+    private loadRepoIssues(): void {
         this.destroyIssueData()
         this.issuesLoading = true
         this.issueRequest = this.gitApi
