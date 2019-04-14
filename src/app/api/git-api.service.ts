@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core'
 import { HttpClient, HttpErrorResponse } from '@angular/common/http'
-import { Observable, EMPTY, throwError } from 'rxjs'
+import { Observable, EMPTY, throwError, of } from 'rxjs'
 import { catchError, map } from 'rxjs/operators'
-import { GitRepoList, GitIssueList } from './git-api-interfaces'
+import { GitRepoList, GitIssueList, GitList } from './git-api-interfaces'
+import { NotificationService } from './notification.service'
+
+const EMPTY_GITLIST: GitList<any> = { total_count: 0, incomplete_results: false, items: [] }
 
 const API_URL = 'https://api.github.com/'
 
@@ -21,18 +24,17 @@ export class GitApiService {
         return this._authToken
     }
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private notification: NotificationService) {}
 
     private handleError(error: HttpErrorResponse) {
-        // TODO
-        console.error(error)
+        this.notification.notify(error.message)
     }
 
     private request(apiCall) {
         return apiCall.pipe(
             catchError(error => {
                 this.handleError(error)
-                return EMPTY
+                return of(EMPTY_GITLIST)
             })
         )
     }

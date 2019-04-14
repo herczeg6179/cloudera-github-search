@@ -13,6 +13,7 @@ import {
     MatBottomSheetModule,
     MatTooltipModule,
     MatProgressSpinnerModule,
+    MatSnackBarModule,
 } from '@angular/material'
 
 import { AppComponent } from './app.component'
@@ -53,6 +54,7 @@ import { AuthenticationComponent } from './authentication/authentication.compone
         MatBottomSheetModule,
         MatTooltipModule,
         MatProgressSpinnerModule,
+        MatSnackBarModule,
         ApiModule,
     ],
     entryComponents: [LoginComponent],
