@@ -4,7 +4,7 @@
         <section class="app-content-search">
             <app-search-tool (repoSelected)="onRepoSelected($event)"></app-search-tool>
             <app-repo-info [repo]="repo" (addForComparing)="onAddForComparing($event)"></app-repo-info>
-            <app-repo-issues [issues]="issues" isLoading="issuesLoading"></app-repo-issues>
+            <app-repo-issues [issues]="issues" [isLoading]="issuesLoading"></app-repo-issues>
         </section>
         <section class="app-content-analytics">
             <app-analytics

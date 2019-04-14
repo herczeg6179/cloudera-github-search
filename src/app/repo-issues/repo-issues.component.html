@@ -1,16 +1,26 @@
-<mat-list>
-    <ng-container *ngFor="let issuesOfState of issuesByState">
-        <h3 mat-subheader>Status: {{ issuesOfState.state }}</h3>
-        <mat-list-item *ngFor="let issue of issuesOfState.issues">
-            <h4 mat-line>
-                <a [disableRipple]="true" mat-raised-button href="{{ issue.url }}" target="_blank" rel="noreferrer">
-                    {{ issue.title }}
-                </a>
-            </h4>
-            <p mat-line>
-                <span class="created-at">Created At {{ issue.created_at | date }}</span>
-            </p>
-        </mat-list-item>
-        <mat-divider></mat-divider>
-    </ng-container>
-</mat-list>
+<div *ngIf="issues || isLoading" class="repo-issues">
+    <h2>Last 30 Issues:</h2>
+    <mat-spinner *ngIf="isLoading" class="repo-issues-loading-indicator"></mat-spinner>
+    <mat-list>
+        <ng-container *ngFor="let issuesOfState of issuesByState">
+            <h3 mat-subheader>Status: {{ issuesOfState.state }}</h3>
+            <mat-list-item *ngFor="let issue of issuesOfState.issues">
+                <h4 mat-line>
+                    <a
+                        [disableRipple]="true"
+                        mat-raised-button
+                        href="{{ issue.html_url }}"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        {{ issue.title }}
+                    </a>
+                </h4>
+                <p mat-line>
+                    <span class="created-at">Created At {{ issue.created_at | date }}</span>
+                </p>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+        </ng-container>
+    </mat-list>
+</div>

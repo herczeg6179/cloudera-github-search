@@ -12,6 +12,7 @@ import {
     MatListModule,
     MatBottomSheetModule,
     MatTooltipModule,
+    MatProgressSpinnerModule,
 } from '@angular/material'
 
 import { AppComponent } from './app.component'
@@ -49,9 +50,9 @@ import { AuthenticationComponent } from './authentication/authentication.compone
         MatAutocompleteModule,
         MatCardModule,
         MatListModule,
-        MatChipsModule,
         MatBottomSheetModule,
         MatTooltipModule,
+        MatProgressSpinnerModule,
         ApiModule,
     ],
     entryComponents: [LoginComponent],

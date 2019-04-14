@@ -1,13 +1,17 @@
 <form class="autocomplete-form" [formGroup]="autocompleteForm">
+    <label class="search-label" for="keyword">Search:</label>
     <mat-form-field appearance="outline">
         <mat-label>Keyword</mat-label>
         <input
-            type="text"
             matInput
+            name="keyword"
+            type="text"
+            class="keyword-input"
             placeholder="Repo name, Owner, Tag, etc."
             formControlName="keyword"
             [matAutocomplete]="auto"
         />
+        <mat-spinner *ngIf="isLoading" class="loading-indicator" diameter="40"></mat-spinner>
     </mat-form-field>
 
     <mat-autocomplete
@@ -21,6 +25,4 @@
             </mat-option>
         </ng-container>
     </mat-autocomplete>
-
-    <p *ngIf="isLoading">Loading</p>
 </form>

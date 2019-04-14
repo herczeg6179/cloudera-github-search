@@ -1,4 +1,4 @@
-<mat-card *ngIf="repo">
+<mat-card *ngIf="repo" class="repo-info">
     <mat-card-header>
         <img mat-card-avatar src="{{ repo.owner.avatar_url }}" />
         <mat-card-title>{{ repo.name }}</mat-card-title>
@@ -7,7 +7,7 @@
     <mat-card-content>
         <mat-list>
             <app-repo-details-item label="Url">
-                <a href="{{ repo.url }}" target="_blank" rel="noreferrer">{{ repo.url }}</a>
+                <a href="{{ repo.html_url }}" target="_blank" rel="noreferrer">{{ repo.html_url }}</a>
             </app-repo-details-item>
             <app-repo-details-item label="Stargazers">
                 {{ repo.stargazers_count }}
@@ -23,7 +23,7 @@
             {{ repo.description }}
         </p>
     </mat-card-content>
-    <mat-card-actions>
-        <button mat-raised-button color="primary" (click)="selectForComparing()">Compare</button>
+    <mat-card-actions class="repo-info-actions">
+        <button mat-raised-button color="primary" (click)="selectForComparing()">Compare ></button>
     </mat-card-actions>
 </mat-card>

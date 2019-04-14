@@ -13,6 +13,7 @@ interface IssuesOfState {
 })
 export class RepoIssuesComponent implements OnChanges {
     @Input() issues: Array<GitIssueInfo>
+    @Input() isLoading: boolean
 
     public issuesByState: Array<IssuesOfState>
 

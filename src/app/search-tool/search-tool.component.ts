@@ -27,10 +27,15 @@ export class SearchToolComponent implements OnInit {
     ngOnInit() {
         this.autocompleteForm
             .get('keyword')
+            // the standard way the documentation suggest to handle api calls is this hot observable
+            // but I suspect this could lead to memory leaks, I might change it later
             .valueChanges.pipe(debounceTime(KEYDOWN_DEBOUNCE))
+            .pipe(tap(() => (this.isLoading = false))) // reset isLoading state
             // the way mat autocomplete works retriggers the change event on value select
             // I don't have a better idea to stop unnecessary API calls in those cases, than this fork
-            .pipe(switchMap(keyword => (keyword !== this.selectedRepo ? this.searchKeyword(keyword) : EMPTY)))
+            .pipe(
+                switchMap(keyword => (!!keyword && keyword !== this.selectedRepo ? this.searchKeyword(keyword) : EMPTY))
+            )
             .subscribe(repoList => (this.repoList = repoList))
     }
 
