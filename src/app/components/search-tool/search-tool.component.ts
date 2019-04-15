@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core'
 import { FormGroup, FormControl } from '@angular/forms'
-import { debounceTime, tap, switchMap, map } from 'rxjs/operators'
-import { EMPTY } from 'rxjs'
+import { debounceTime, tap, switchMap, map, catchError } from 'rxjs/operators'
+import { EMPTY, throwError } from 'rxjs'
 
 import { GitRepoInfo } from '@api/git-api-interfaces'
 import { GitApiService } from '@api/git-api.service'
@@ -46,6 +46,12 @@ export class SearchToolComponent implements OnInit {
             .getRepos(keyword)
             .pipe(map(result => result.items.splice(0, RESULT_MAX_LENGTH)))
             .pipe(tap(() => (this.isLoading = false)))
+            .pipe(
+                catchError(error => {
+                    this.isLoading = false
+                    return throwError(error)
+                })
+            )
     }
 
     formatOutput(repo: GitRepoInfo) {

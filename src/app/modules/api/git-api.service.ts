@@ -35,7 +35,7 @@ export class GitApiService {
         return apiCall.pipe(
             catchError(error => {
                 this.handleError(error)
-                return of(EMPTY_GITLIST)
+                return throwError(error)
             })
         )
     }
