@@ -1,7 +1,7 @@
 language: node_js
 script:
     - npm run test
-    - NODE_ENV=production npm run build
+    - NODE_ENV=production npm run build -- --base-href "cloudera-github-search/"
 deploy:
     provider: pages
     local-dir: dist
