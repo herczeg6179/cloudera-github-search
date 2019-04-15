@@ -7,7 +7,7 @@ import { delay } from 'rxjs/operators'
 
 const FAKE_ASYNC_TIME = 100
 
-fdescribe('AuthenticationComponent', () => {
+describe('AuthenticationComponent', () => {
     let component: AuthenticationComponent
     let fixture: ComponentFixture<AuthenticationComponent>
 
